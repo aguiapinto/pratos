@@ -1,0 +1,430 @@
+*{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+}
+
+/*Página dos pratos*/
+.Pratos{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+/*Secção da lista de pratos para escolha da refeição anterior*/
+.todos_pratos{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+/*Titulo a identificar as Opções de pratos*/
+.todos_pratos h2{
+    position: relative;
+    font-size: 40px;
+    margin: 20px;
+}
+
+/*Lista de pratos disponiveis*/
+.pratos_opcoes{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    min-width: 920px;
+    height: 100%;
+    min-height: 720px;
+    padding: 20px;
+    align-items: center;
+    border: 1px solid black;
+}
+
+/*Pratos individuais*/
+.prato, .prato_1{
+    width: 25%;
+    max-width: 253px;
+    height:200px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 12%;
+    margin: 20px;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0 , 0, 0.4);
+    box-shadow:  0 4px 6px 0px rgba(0,0,0,0.4), 0 4px 12px 0 rgba(0, 0, 0, 0.6);
+    transition: 0.8s;
+}
+
+@media screen and (min-width:1300px) {
+    .prato, .prato_1{
+        left: 2%;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .prato, .prato_1{
+        left: 6%;
+    }
+}
+
+/*Comportamento do prato com o rato por cima*/
+.prato:hover, .prato_1:hover{
+    transform: scale(1.05);
+    transition: 0.8s;
+}
+
+/*Imagem de cada prato*/
+
+
+.prato img{
+    width: 100%;
+    height: 90%;
+    cursor: pointer;
+}
+
+.prato_1 img{
+    width: 100%;
+    height: 90%;
+    cursor: pointer;
+}
+
+/*Titulo de cada prato*/
+.prato h3, .prato_1 h3{
+    background-color: rgba(0, 0 , 0, 0);
+    color: white;
+    cursor: pointer;
+}
+
+.prato .pratos_nome, .prato_1 .pratos_nome{
+    text-decoration: none;
+}
+
+/*Informação inicial para indicar que tem de escolher o prato da refeição anterior*/
+.informacao{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    left: 28%;
+    top: 30%;
+    background-color: rgba(0, 0 , 0, 0.7);
+    display: block;
+    opacity: 0;
+    z-index: 0;
+}
+
+.informacao .botao_fechar{
+    position: relative;
+    width: 12%;
+    left: 95.5%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.informacao h2, .informacao_opcoes_pratos h2{
+    position: relative;
+    font-size: 30px;
+    color: white;
+    margin: 0px 20px 10px 20px;
+}
+
+.informacao_opcoes_pratos{
+    position: fixed;
+    left: 20%;
+    bottom: -10%;
+    max-width: 60%;
+    background-color: rgba(0, 0 , 0, 0.7);
+    display: block;
+    opacity: 0;
+    z-index: 0;
+}
+
+.informacao_opcoes_pratos .botao_fechar{
+    position: relative;
+    width: 12%;
+    left: 95.5%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/*Popup de opções entre sugerir o próximo prato ou adcionar à lista de pratos*/
+
+
+/*Popup das opções*/
+.popup_opcoes{
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    top: 30%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    z-index: 1;
+}
+
+/*Opções de sugerir pratos e adicionar à lista*/
+.popup_opcoes .opcoes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+}
+
+.opcoes div{
+    width: 50%;
+    margin: 20px;
+    text-align: center;
+}
+
+/*Opções de Escolher outro prato e voltar atrás*/
+.escolha_outro_prato{
+    margin: 0px 0px 20px 0px ;
+}
+
+.popup_opcoes input{
+    cursor: pointer;
+}
+
+.cobre_escolha{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+/*Receitas*/
+
+.popup_receita{
+    position: fixed;
+    left: 10%;
+    top: 14%;
+    height: 80vh;
+    width: 80vw;
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    border: 2px solid black;
+    z-index: 1;
+}
+
+.popup_receita .botao_fechar{
+    position: relative;
+    width: fit-content;
+    left: 96%;
+    font-size: 2vw;
+    max-height: 8%;
+    cursor: pointer;
+}
+
+@media screen and (max-height:230px){
+    .popup_receita .botao_fechar{
+        font-size: 10px;
+    }
+}
+
+.conteudo_receita{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    height: 92%;
+}
+
+.receita{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    max-height: 90%;
+    width: 95%;
+    border: 2px solid black;
+}
+
+
+.imagem_receita{
+    position: relative;
+    top: 10%;
+    left: 1%;
+    width: 40%;
+    max-height: 80%;
+    padding: 20px;
+    align-items: center;
+}
+
+.informacao_receita{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 60%;
+    max-height: 100%;
+    flex-direction: column;
+}
+
+
+.informacao_receita h2{
+    margin: 0% 0% 2% 0%;
+    text-align: center;
+    font-size: 2vw;
+    max-height: 5%;
+}
+
+.receita_texto{
+    width: 95%;
+    height: 100%;
+    text-align: justify;
+    width: 50%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.ingredientes{
+    width: 95%;
+    height: 100%;
+    text-align: justify;
+    width: 50%;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.receita_texto ul, .ingredientes ul{
+    padding-top: 5%;
+    padding-left: 12%;
+    padding-right: 5%;
+    font-size: clamp(8px, 1.5vw, 80px);
+}
+
+.receita_texto li{
+    margin: 5px 0px;
+}
+
+.ingredientes li{
+    margin: 10px;
+}
+
+/*Lista de pratos anteriores*/
+
+.conteudo_pratos_anteriores{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+
+#titulo_pratos_anteriores{
+    margin: 20px;
+}
+
+.lista_pratos_anteriores{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 95%;
+    margin: 5px;
+    padding: 10px;
+}
+
+.anteriores_lista{
+    position: relative;
+    list-style-type: none;
+    width: 95%;
+    margin: 5px 0px;
+    padding: 0px 10px;
+    left: 2%;
+}
+
+
+.caixa_elemento{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0px 4px 6px 1px;
+    margin: 10px 0px;
+}
+
+.informacao_elemento{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    
+}
+
+.informacao_elemento .informacao_prato{
+    width: 50%;
+    position: relative;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.imagem_elemento{
+    width: 35%;
+    height: 160px;
+    padding: 5px 0px;
+}
+
+.imagem_elemento img{
+    width: 100%;
+    height: 100%;
+}
+
+.informacao_elemento .informacao_adicional{
+    width: 22%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: 28px;
+}
+
+.informacao_condimentos{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 60%;
+    margin: 5px 0px;
+    padding: 5px 0px;
+    justify-content: space-between;
+}
+
+.botao_opcoes{
+    position: relative;
+    height: fit-content;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    background-color: grey;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.informacao_elemento .informacao_adicional p{
+    position: relative;
+    top: 40%;
+    width: 70%;
+    height: fit-content;
+    font-size: 14px;
+}
+
+.fa{
+    position: relative;
+    top:35%;
+    width: 30%;
+    height: fit-content;
+    color: black;
+    cursor: pointer;
+}
